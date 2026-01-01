@@ -64,7 +64,7 @@ const UploadFile = ({
             </span>
             <Trash
               onClick={onTrash}
-              className="absolute right-10 fill-red-600 text-red-600"
+              className="absolute right-10 fill-red-600 text-red-600 cursor-pointer"
             />
           </div>
         </div>

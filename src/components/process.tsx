@@ -1,14 +1,24 @@
 import { SlidersVertical, Sparkles, Download } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 
 type processProps = {
   removeBackground: () => void;
   url: string;
   fileName: string;
+  loading: number;
+  isUrl: boolean;
 };
 
-const Process = ({ removeBackground, url, fileName }: processProps) => {
+const Process = ({
+  removeBackground,
+  url,
+  fileName,
+  loading,
+  isUrl,
+}: processProps) => {
   return (
     <div id="process" className="min-w-180 rounded-3xl p-5 bg-card space-y-4">
+      <Toaster />
       <div className="flex items-center gap-5">
         <div className="w-13 h-13 flex items-center justify-center rounded-full bg-background-secondary">
           <SlidersVertical />
@@ -18,16 +28,17 @@ const Process = ({ removeBackground, url, fileName }: processProps) => {
       <div id="progess_bar" className="">
         <div className="flex justify-between px-10">
           <p className="text-blue-700">Processing complete</p>
-          <span>100%</span>
+          <span className="font-semibold">{loading + " %"}</span>
         </div>
         <progress
           className="progress progress-primary w-150 justify-start"
-          value={20}
+          value={loading}
           max="100"
         ></progress>
       </div>
       <br></br>
       <button
+        id="scale"
         onClick={removeBackground}
         className="btn btn-info text-[1.3em] w-100 h-15 rounded-3xl"
       >
@@ -46,11 +57,13 @@ const Process = ({ removeBackground, url, fileName }: processProps) => {
         </div>
       </div>
       {/*..............*/}
-      <a href={url} download={fileName + ".png"}>
-        <button className="btn btn-success text-[1.3em] w-100 h-15 rounded-3xl">
-          <Download className="mr-2" /> Download
-        </button>
-      </a>
+      {isUrl && (
+        <a href={url} download="no-background.png">
+          <button className="btn btn-success text-[1.3em] w-100 h-15 rounded-3xl">
+            <Download className="mr-2" /> Download
+          </button>
+        </a>
+      )}
     </div>
   );
 };
