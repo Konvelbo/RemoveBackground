@@ -5,7 +5,7 @@ type objectProps = {
   preview: string | ArrayBuffer | null;
   fileName: string;
   size: string | number | JSX;
-  onFileUpload: (newFile: newFilePorps) => void;
+  onFileUpload: (newFile: newFilePorps) => FileList | string | null;
   onTrash: () => void;
   showPreview: boolean;
 };
@@ -32,7 +32,7 @@ const UploadFile = ({
         </div>
         <h2 className="text-2xl font-semibold">Input Image</h2>
       </div>
-      <label className="flex flex-col items-center justify-center w-full h-30 border-2 border-dashed border-gray-600 rounded-3xl cursor-pointer bg-surface-dark hover:bg-surface-dark/80 hover:border-primary transition-all group">
+      <label className="flex flex-col items-center justify-center w-full h-30 border-2 border-dashed border-gray-600 rounded-3xl cursor-pointer bg-surface-dark hover:bg-surface-dark/80 hover:border-primary transition-all group relative">
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <span className="material-symbols-outlined text-3xl text-gray-500 group-hover:text-primary mb-2 transition-colors">
             cloud_upload
@@ -44,8 +44,9 @@ const UploadFile = ({
           <p className="text-xs text-gray-500">SVG, PNG or JPG </p>
         </div>
         <input
+          id="file-input"
           onChange={(value) => onFileUpload(value.target.files[0])}
-          className="hidden"
+          className=""
           type="file"
         />
       </label>
