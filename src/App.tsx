@@ -109,7 +109,7 @@ function App() {
           >
             <div className="hover-3d">
               <figure id="animate-image" className="max-w-150 rounded-2xl">
-                <img src={url || ""} alt="Processed content" />
+                {url && <img src={url || ""} alt="Processed content" />}
               </figure>
               <div></div>
               <div></div>
@@ -120,7 +120,7 @@ function App() {
               <div></div>
               <div></div>
             </div>
-            <DaizySpan />
+            {url && <DaizySpan />}
           </div>
         </div>
         <div id="uploadFile_process" className="flex flex-col space-y-5">
