@@ -34,13 +34,10 @@ body {
     font-family: var(--font-sans);
     margin: 0;
     min-height: 100vh;
-    body {
-        scrollbar-width: none;
-    }
 }
 
-body::-webkit-scrollbar {
-    display: none; /* Masque la barre, le défilement reste */
+::-webkit-scrollbar {
+    display: none;
 }
 
 #file-input {
@@ -88,14 +85,14 @@ body::-webkit-scrollbar {
         gap: 1.5rem;
     }
     #div-box {
-        width: 1000px;
-        height: 600px;
+        min-width: 900px;
+        min-height: 500px;
     }
     #animate-image {
         max-width: 450px;
     }
     #upload_file {
-        min-width: 600px;
+        min-width: 700px;
         min-height: 300px;
     }
     #process {
@@ -116,7 +113,7 @@ body::-webkit-scrollbar {
     }
     #div-box {
         min-width: 900px;
-        height: 700px;
+        min-height: 500px;
     }
     #animate-image {
         max-width: 450px;
@@ -142,8 +139,12 @@ body::-webkit-scrollbar {
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 700px;
-        height: 500px;
+        min-width: 900px;
+        min-height: 500px;
+    }
+    #upload_file {
+        min-width: 500px;
+        min-height: 300px;
     }
 }
 @media screen and(max-width: 1600px) {
@@ -152,7 +153,7 @@ body::-webkit-scrollbar {
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 800px;
+        min-width: 900px;
         height: 500px;
     }
     /*#upload_file {
@@ -167,7 +168,7 @@ body::-webkit-scrollbar {
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 850px;
+        min-width: 650px;
         height: 500px;
     }
     #upload_file {
@@ -230,5 +231,9 @@ body::-webkit-scrollbar {
     }
     #uploadFile_process {
         flex-direction: column;
+    }
+
+    #animate-image {
+        max-width: 350px;
     }
 }

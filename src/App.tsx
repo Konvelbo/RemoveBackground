@@ -133,6 +133,7 @@ function App() {
             showPreview={showPreview}
           />
           <Process
+            preview={preview}
             removeBackground={onRemoveBackground}
             url={url || ""}
             loading={loading}

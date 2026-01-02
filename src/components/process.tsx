@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 type processProps = {
   removeBackground: () => void;
   url: string;
-
+  preview: string | ArrayBuffer | null;
   loading: number;
   isUrl: boolean;
 };
@@ -12,7 +12,7 @@ type processProps = {
 const Process = ({
   removeBackground,
   url,
-
+  preview,
   loading,
   isUrl,
 }: processProps) => {
@@ -26,10 +26,14 @@ const Process = ({
         <h2 className="text-2xl font-semibold">Process</h2>
       </div>
       <div id="progess_bar" className="">
-        <div className="flex justify-between px-10">
-          <p className="text-blue-700">Processing complete</p>
-          <span className="font-semibold">{loading + " %"}</span>
-        </div>
+        {preview && (
+          <div className="flex justify-between px-10">
+            <p className="text-blue-700">
+              {loading === 100 ? "Processing complete" : "Wait a moment..."}
+            </p>
+            <span className="font-semibold">{loading + " %"}</span>
+          </div>
+        )}
         <progress
           id="progress"
           className="progress progress-primary w-150 justify-start"
