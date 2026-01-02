@@ -1,11 +1,10 @@
 import { FileUp, Trash } from "lucide-react";
-import type { newFilePorps } from "../App";
-import type { JSX } from "react/jsx-dev-runtime";
+
 type objectProps = {
   preview: string | ArrayBuffer | null;
   fileName: string;
-  size: string | number | JSX;
-  onFileUpload: (newFile: newFilePorps) => FileList | string | null;
+  size: string | number;
+  onFileUpload: (newFile: File) => void;
   onTrash: () => void;
   showPreview: boolean;
 };
@@ -17,7 +16,7 @@ const UploadFile = ({
   size,
   showPreview,
 }: objectProps) => {
-  const value = size / 1024 / 1024;
+  const value = Number(size) / 1024 / 1024;
 
   const sizeFixed = value.toFixed(2);
 
@@ -45,7 +44,11 @@ const UploadFile = ({
         </div>
         <input
           id="file-input"
-          onChange={(value) => onFileUpload(value.target.files[0])}
+          onChange={(value) => {
+            if (value.target.files && value.target.files.length > 0) {
+              onFileUpload(value.target.files[0]);
+            }
+          }}
           className=""
           type="file"
         />
@@ -56,7 +59,10 @@ const UploadFile = ({
           className="bg-background-secondary p-5 rounded-3xl relative"
         >
           <div className="flex items-center gap-4">
-            <img src={preview} className="w-15 h-15 rounded-lg bg-red" />
+            <img
+              src={typeof preview === "string" ? preview : undefined}
+              className="w-15 h-15 rounded-lg bg-red"
+            />
             <span>
               <h2 className="mb-1">{fileName}</h2>
               <span className="text-gray-400">

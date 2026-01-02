@@ -1,10 +1,10 @@
 import { SlidersVertical, Sparkles, Download } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 type processProps = {
   removeBackground: () => void;
   url: string;
-  fileName: string;
+
   loading: number;
   isUrl: boolean;
 };
@@ -12,7 +12,7 @@ type processProps = {
 const Process = ({
   removeBackground,
   url,
-  fileName,
+
   loading,
   isUrl,
 }: processProps) => {

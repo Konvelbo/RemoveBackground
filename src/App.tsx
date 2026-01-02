@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Process from "./components/process";
 import UploadFile from "./components/upload_file";
 import { removeBackground } from "@imgly/background-removal";
 import toast, { Toaster } from "react-hot-toast";
 import DaizySpan from "./components/daizySpan";
-
-export type newFilePorps = {
-  lastModified: number;
-  lastModifyDate: object;
-  name: string;
-  size: number;
-  type: string;
-  webkitRelativePath: string;
-};
 
 function App() {
   const [file, setFile] = useState<object>({});
@@ -22,11 +13,10 @@ function App() {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>("");
   const [url, setUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPreview, setShowPreview] = useState<boolean>(false);
   const [isUrl, setIsUrl] = useState<boolean>(false);
 
-  const onFileUpload = (newFile: newFilePorps) => {
+  const onFileUpload = (newFile: File) => {
     // All important condion//
     if (!newFile) return;
     if (!newFile.type.startsWith("image/")) {
@@ -42,7 +32,6 @@ function App() {
 
     setFile(newFile);
     setFileName(newFile.name);
-    // console.log(newFile);
     setSize(newFile.size);
     setShowPreview(true);
     const reader = new FileReader();
@@ -59,7 +48,6 @@ function App() {
   };
 
   const startLoading = () => {
-    setIsLoading(true);
     setLoading(0);
 
     const interval = setInterval(() => {
@@ -87,12 +75,12 @@ function App() {
       setLoading(100);
       toast.success("Background remove successfully");
       setIsUrl(true);
-    } catch (error) {
+    } catch {
       toast.error("Background removal failed");
     } finally {
       clearInterval(interval);
       setTimeout(() => {
-        setIsLoading(false);
+        // setIsLoading(false);
         setLoading(0);
       }, 500);
     }
@@ -121,7 +109,7 @@ function App() {
           >
             <div className="hover-3d">
               <figure id="animate-image" className="max-w-150 rounded-2xl">
-                <img src={url} />
+                <img src={url || ""} alt="Processed content" />
               </figure>
               <div></div>
               <div></div>
@@ -146,8 +134,7 @@ function App() {
           />
           <Process
             removeBackground={onRemoveBackground}
-            url={url}
-            fileName={fileName}
+            url={url || ""}
             loading={loading}
             isUrl={isUrl}
           />
