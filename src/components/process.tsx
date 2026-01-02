@@ -31,6 +31,7 @@ const Process = ({
           <span className="font-semibold">{loading + " %"}</span>
         </div>
         <progress
+          id="progress"
           className="progress progress-primary w-150 justify-start"
           value={loading}
           max="100"

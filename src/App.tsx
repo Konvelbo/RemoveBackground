@@ -20,7 +20,7 @@ function App() {
   const [fileName, setFileName] = useState<string>("");
   const [size, setSize] = useState<string | number>("");
   const [preview, setPreview] = useState<string | ArrayBuffer | null>("");
-  const [url, setUrl] = useState<string>("");
+  const [url, setUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPreview, setShowPreview] = useState<boolean>(false);
@@ -110,14 +110,17 @@ function App() {
           and free for personal use.
         </p>
       </div>
-      <div className="flex justify-between">
-        <div className="bg-card max-h-174 min-w-250 p-2 rounded-3xl">
+      <div id="container" className="flex justify-between">
+        <div
+          id="div-box"
+          className="bg-card max-h-174 min-w-250 p-2 rounded-3xl"
+        >
           <div
             id="image"
             className="flex items-center justify-center w-full h-full rounded-3xl relative"
           >
             <div className="hover-3d">
-              <figure className="max-w-150 rounded-2xl">
+              <figure id="animate-image" className="max-w-150 rounded-2xl">
                 <img src={url} />
               </figure>
               <div></div>
@@ -132,7 +135,7 @@ function App() {
             <DaizySpan />
           </div>
         </div>
-        <div className="flex flex-col space-y-5">
+        <div id="uploadFile_process" className="flex flex-col space-y-5">
           <UploadFile
             onFileUpload={onFileUpload}
             preview={preview}
