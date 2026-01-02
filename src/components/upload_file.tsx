@@ -23,7 +23,7 @@ const UploadFile = ({
   return (
     <div
       id="upload_file"
-      className="min-w-180 rounded-3xl p-5 bg-card space-y-5"
+      className="w-full bg-card rounded-3xl p-5 md:p-8 space-y-5"
     >
       <div className="flex items-center gap-5">
         <div className="w-13 h-13 flex items-center justify-center rounded-full bg-background-secondary">

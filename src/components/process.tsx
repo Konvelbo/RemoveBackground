@@ -17,18 +17,21 @@ const Process = ({
   isUrl,
 }: processProps) => {
   return (
-    <div id="process" className="min-w-180 rounded-3xl p-5 bg-card space-y-4">
+    <div
+      id="process"
+      className="w-full rounded-3xl p-5 md:p-8 bg-card space-y-6"
+    >
       <Toaster />
       <div className="flex items-center gap-5">
-        <div className="w-13 h-13 flex items-center justify-center rounded-full bg-background-secondary">
+        <div className="w-13 h-13 flex items-center justify-center rounded-full bg-background-secondary shrink-0">
           <SlidersVertical />
         </div>
         <h2 className="text-2xl font-semibold">Process</h2>
       </div>
-      <div id="progess_bar" className="">
+      <div id="progess_bar" className="w-full">
         {preview && (
-          <div className="flex justify-between px-10">
-            <p className="text-blue-700">
+          <div className="flex justify-between px-2 md:px-10 mb-2">
+            <p className="text-blue-700 text-sm md:text-base">
               {loading === 100 ? "Processing complete" : "Wait a moment..."}
             </p>
             <span className="font-semibold">{loading + " %"}</span>
@@ -36,7 +39,7 @@ const Process = ({
         )}
         <progress
           id="progress"
-          className="progress progress-primary w-150 justify-start"
+          className="progress progress-primary w-full h-3 md:h-4"
           value={loading}
           max="100"
         ></progress>
@@ -45,7 +48,7 @@ const Process = ({
       <button
         id="scale"
         onClick={removeBackground}
-        className="btn btn-info text-[1.3em] w-100 h-15 rounded-3xl"
+        className="btn btn-info text-lg md:text-xl w-full h-14 md:h-16 rounded-3xl"
       >
         <Sparkles className="mr-2" /> Remove Background
       </button>{" "}
@@ -63,8 +66,8 @@ const Process = ({
       </div>
       {/*..............*/}
       {isUrl && (
-        <a href={url} download="no-background.png">
-          <button className="btn btn-success text-[1.3em] w-100 h-15 rounded-3xl">
+        <a href={url} download="no-background.png" className="block w-full">
+          <button className="btn btn-success text-lg md:text-xl w-full h-14 md:h-16 rounded-3xl">
             <Download className="mr-2" /> Download
           </button>
         </a>

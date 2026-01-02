@@ -87,43 +87,52 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col text-center p-10 pt-15">
+    <div className="flex flex-col text-center p-4 md:p-10 pt-10 md:pt-15 min-h-screen">
       <Toaster />
       <div className="flex flex-col gap-5 justify-center items-center">
-        <h1 className="text-5xl font-bold text-center mb-4">
+        <h1 className="text-3xl md:text-5xl font-bold text-center mb-4">
           Remove Backgrounds in Seconds
         </h1>
-        <p className="text-lg text-gray-400 text-center mb-12 max-w-2xl">
+        <p className="text-base md:text-lg text-gray-400 text-center mb-8 md:mb-12 max-w-2xl px-4">
           Upload your image and let our AI handle the rest. Automatic, precise,
           and free for personal use.
         </p>
       </div>
-      <div id="container" className="flex justify-between">
+
+      <div
+        id="container"
+        className="flex flex-col xl:flex-row gap-6 justify-center items-start w-full max-w-[1800px] mx-auto"
+      >
         <div
           id="div-box"
-          className="bg-card max-h-174 min-w-250 p-2 rounded-3xl"
+          className="bg-card w-full xl:w-2/3 h-[400px] md:h-[600px] p-2 rounded-3xl"
         >
           <div
             id="image"
-            className="flex items-center justify-center w-full h-full rounded-3xl relative"
+            className="flex items-center justify-center w-full h-full rounded-3xl relative overflow-hidden"
           >
-            <div className="hover-3d">
-              <figure id="animate-image" className="max-w-150 rounded-2xl">
-                {url && <img src={url || ""} alt="Processed content" />}
+            <div className="hover-3d w-full h-full flex items-center justify-center">
+              <figure
+                id="animate-image"
+                className="max-w-[90%] max-h-[90%] rounded-2xl object-contain"
+              >
+                {url && (
+                  <img
+                    src={url || ""}
+                    alt="Processed content"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                )}
               </figure>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
             </div>
             {url && <DaizySpan />}
           </div>
         </div>
-        <div id="uploadFile_process" className="flex flex-col space-y-5">
+
+        <div
+          id="uploadFile_process"
+          className="flex flex-col w-full xl:w-1/3 gap-6"
+        >
           <UploadFile
             onFileUpload={onFileUpload}
             preview={preview}
