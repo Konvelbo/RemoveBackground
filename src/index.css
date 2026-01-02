@@ -1,0 +1,8 @@
+body {
+    scrollbar-color: #888 #f1f1f1; /* Curseur (thumb) gris, Piste (track) gris clair */
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Masque la barre, le défilement reste */
+}

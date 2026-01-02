@@ -34,6 +34,13 @@ body {
     font-family: var(--font-sans);
     margin: 0;
     min-height: 100vh;
+    body {
+        scrollbar-width: none;
+    }
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Masque la barre, le défilement reste */
 }
 
 #file-input {
@@ -74,36 +81,15 @@ body {
 #scale:hover {
     scale: 1.02;
 }
-@media screen and (max-width: 1400px) {
-    #container {
-        flex-direction: column-reverse;
-        gap: 1.5rem;
-    }
-    #div-box {
-        min-width: 300px;
-        max-height: 400px;
-    }
-    #upload_file {
-        min-width: 100px;
-    }
-    #process {
-        min-width: 100px;
-    }
-    #progress {
-        width: calc(100% - 3.5rem);
-    }
-    #uploadFile_process {
-        flex-direction: column;
-    }
-}
+
 @media screen and (max-width: 1880px) {
     #container {
         /*flex-direction: column-reverse;*/
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 1100px;
-        height: 500px;
+        width: 1000px;
+        height: 600px;
     }
     #animate-image {
         max-width: 450px;
@@ -129,8 +115,8 @@ body {
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 1000px;
-        height: 500px;
+        min-width: 900px;
+        height: 700px;
     }
     #animate-image {
         max-width: 450px;
@@ -156,35 +142,93 @@ body {
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 900px;
+        min-width: 700px;
         height: 500px;
     }
 }
-@media screen and (max-width: 1600px) {
+@media screen and(max-width: 1600px) {
     #container {
         /*flex-direction: column-reverse;*/
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 900px;
+        min-width: 800px;
         height: 500px;
     }
-    #upload_file {
-        min-width: 500px;
+    /*#upload_file {
+        min-width: 600px;
         min-height: 300px;
-    }
+    }*/
 }
+
 @media screen and (max-width: 1500px) {
     #container {
         /*flex-direction: column-reverse;*/
         gap: 1.5rem;
     }
     #div-box {
-        min-width: 650px;
+        min-width: 850px;
         height: 500px;
     }
     #upload_file {
-        min-width: 500px;
+        min-width: 400px;
         min-height: 300px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #container {
+        flex-direction: column-reverse;
+        gap: 1.5rem;
+    }
+    #div-box {
+        min-width: 100%;
+        /*max-height: 400px;*/
+    }
+    #upload_file {
+        min-width: 150px;
+    }
+    #process {
+        min-width: 100px;
+    }
+
+    #process button {
+        width: 280px;
+    }
+
+    #progress {
+        width: calc(100% - 3.5rem);
+    }
+    #uploadFile_process {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 620px) {
+    #container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(100px, 1fr);
+        /*flex-direction: column-reverse;*/
+        gap: 1.5rem;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+
+    #div-box {
+        min-width: 300px;
+        max-height: 400px;
+        grid-row: 3;
+    }
+    #upload_file {
+        min-width: 400px;
+    }
+    #process {
+        min-width: 400px;
+    }
+    #progress {
+        width: calc(100% - 3.5rem);
+    }
+    #uploadFile_process {
+        flex-direction: column;
     }
 }
